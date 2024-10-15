@@ -1,10 +1,10 @@
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App.tsx';
 import './index.css';
 import ErrorPage from './pages/Library.tsx';
 import Login from './pages/Login.tsx';
-import auth from './utils/auth.ts';
+// import auth from './utils/auth.ts';
 import Signup from './pages/Signup.tsx';
 import Search from './pages/Search.tsx';
 import BestSeller from './pages/Bestseller.tsx';
@@ -18,13 +18,13 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "",
-        element: <Navigate to="/login" replace />, // Redirect root to login
+        index: true,
+        element: <Login />, // Login is the "home page"
       },
-      {
-        path: "login",
-        element: <Login />,
-      },
+      // {
+      //   path: "login",
+      //   element: <Login />,
+      // },
       {
         path: "signup",
         element: <Signup />,
@@ -35,15 +35,15 @@ const router = createBrowserRouter([
       },
       {
         path: 'bestsellers',
-        element: auth.loggedIn() ? <BestSeller /> : <Navigate to="/login" replace />
+        element:  <BestSeller /> 
       },
       {
         path: 'favorites',
-        element: auth.loggedIn() ? <Favorites /> : <Navigate to="/login" replace />
+        element: <Favorites /> 
       },
       {
         path: 'library',
-        element: auth.loggedIn() ? <Library /> : <Navigate to="/login" replace />
+        element:  <Library /> 
       }
     ]
   }

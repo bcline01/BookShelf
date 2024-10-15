@@ -1,13 +1,14 @@
 import './css/Login.css';
 import { useState, FormEvent, ChangeEvent } from "react";
-
-import { loginUser } from "../api/userAPI";
+import Auth from '../utils/auth';
+import { login } from "../api/authAPI";
 import { Link, useNavigate } from "react-router-dom";
+import './Search.js'
 
 const Login = () => {
   const [nameIsEmpty, setNameIsEmpty] = useState(false);
   const [passwordisEmpty, setPasswordIsEmpty] = useState(false);
-  const [disableSubmit, setDisableSubmit] = useState(true);
+  // const [disableSubmit, setDisableSubmit] = useState(true);
   const [loginData, setLoginData] = useState({
     username: '',
     password: ''
@@ -15,17 +16,12 @@ const Login = () => {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    const updatedLoginData = {
+    setLoginData({
       ...loginData,
       [name]: value
-    }
-    setLoginData(updatedLoginData);
-    
-    // Update disableSubmit state based on the updatedLoginData
-    setDisableSubmit(
-      updatedLoginData.username.trim() === '' || updatedLoginData.password.trim() === ''
-    );
+    });
   };
+
 
   const handleBlur = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -40,15 +36,20 @@ const Login = () => {
 
   const navigate = useNavigate();
 
+  const isFormValid = () => {
+    return loginData.username.trim() !== '' && loginData.password.trim() !== '';
+  };
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    try {
-      const data = await loginUser(loginData.username, loginData.password);
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('user', JSON.stringify(data.user));
-      navigate('/search');
-    } catch (err) {
-      console.error('Failed to login', err);
+    if (isFormValid()) {
+      try {
+        const data = await login(loginData);
+        Auth.login(data.token);
+        navigate('/search');
+      } catch (err) {
+        console.error('Failed to login', err);
+      }
     }
   };
 
@@ -86,7 +87,7 @@ const Login = () => {
           	Password is required.
         	</div>
         }
-        <button disabled={disableSubmit} className="btn btn-outline-primary my-4" type='submit'>Submit</button>
+        <button  disabled={!isFormValid()} className="btn btn-outline-primary my-4" type='submit'>Submit</button>
       </form>
       <div>
         <Link className="link-offset-3" to="/signup">Sign Up</Link>

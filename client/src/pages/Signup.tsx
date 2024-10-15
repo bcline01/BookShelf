@@ -1,14 +1,17 @@
 import { useState, ChangeEvent, FormEvent } from 'react';
-import { registerUser } from '../api/userAPI';
+import { signUp } from '../api/authAPI';
 import { useNavigate } from 'react-router-dom';
 import './css/Signup.css';
+import Auth from '../utils/auth';
 
 export default function Signup() {
   const [nameIsEmpty, setNameIsEmpty] = useState(false);
-  const [passwordisEmpty, setPasswordIsEmpty] = useState(false);
+  const [emailIsEmpty, setEmailIsEmpty] = useState(false); // New state for email
+  const [passwordIsEmpty, setPasswordIsEmpty] = useState(false);
   const [disableSubmit, setDisableSubmit] = useState(true);
   const [signupData, setSignupData] = useState({
     username: '',
+    email: '', // Add email field
     password: ''
   });
 
@@ -22,7 +25,9 @@ export default function Signup() {
     };
     setSignupData(updatedSignupData);
     setDisableSubmit(
-      updatedSignupData.username.trim() === '' || updatedSignupData.password.trim() === ''
+      updatedSignupData.username.trim() === '' || 
+      updatedSignupData.email.trim() === '' || // Check for email
+      updatedSignupData.password.trim() === ''
     );
   };
 
@@ -30,9 +35,9 @@ export default function Signup() {
     const { name, value } = e.target;
     if (name === 'username') {
       setNameIsEmpty(value.trim() === '');
-    }
-    
-    if (name === 'password') {
+    } else if (name === 'email') {
+      setEmailIsEmpty(value.trim() === ''); // Check for email
+    } else if (name === 'password') {
       setPasswordIsEmpty(value.trim() === '');
     }
   };
@@ -40,10 +45,13 @@ export default function Signup() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      await registerUser(signupData.username, signupData.password);
-      navigate('/login'); // useLocation
+      // Call the sign up API endpoint with signUpData
+      const data = await signUp(signupData);
+      // If sign up is successful, call Auth.login to store the token in localStorage
+      Auth.login(data.token);
+      navigate('/search')
     } catch (err) {
-      console.error('Failed to sign up user', err);
+      console.error('Failed to login', err);  // Log any errors that occur during sign up
     }
   };
 
@@ -62,9 +70,24 @@ export default function Signup() {
           className={`form-control border ${nameIsEmpty ? 'border-danger' : ''}`}
         />
         {nameIsEmpty && 
-        	<div className='mt-2 text-danger'>
-          	Name is required.
-        	</div>
+          <div className='mt-2 text-danger'>
+            Name is required.
+          </div>
+        }
+        <label htmlFor="email" className="form-label mt-4">Email</label>
+        <input 
+          type='email' // Use email input type for validation
+          name='email'
+          value={signupData.email || ''}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          id="email"
+          className={`form-control border ${emailIsEmpty ? 'border-danger' : ''}`}
+        />
+        {emailIsEmpty && 
+          <div className='mt-2 text-danger'>
+            Email is required.
+          </div>
         }
         <label className='form-label mt-4'>Password</label>
         <input 
@@ -74,16 +97,15 @@ export default function Signup() {
           onChange={handleChange}
           onBlur={handleBlur}
           id="password"
-          className={`form-control border ${passwordisEmpty ? 'border-danger' : ''}`}
+          className={`form-control border ${passwordIsEmpty ? 'border-danger' : ''}`}
         />
-        {passwordisEmpty && 
-        	<div className="mt-2 text-danger">
-          	Password is required.
-        	</div>
+        {passwordIsEmpty && 
+          <div className="mt-2 text-danger">
+            Password is required.
+          </div>
         }
         <button disabled={disableSubmit} className="btn btn-outline-primary my-4" type='submit'>Register</button>
       </form>
     </div>
-    
-  )
-};
+  );
+}
