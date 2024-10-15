@@ -9,7 +9,7 @@ import { UserLogin } from "../interfaces/UserLogin";
 const signUp = async (userInfo: UserLogin) => {
   try {
     // Send a POST request to '/api/login' with user login information in JSON format
-    const response = await fetch('/api/signup', {
+    const response = await fetch('/api/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

@@ -46,6 +46,7 @@ const Login = () => {
       try {
         const data = await login(loginData);
         Auth.login(data.token);
+        console.log("here")
         navigate('/search');
       } catch (err) {
         console.error('Failed to login', err);

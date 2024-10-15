@@ -10,6 +10,7 @@ import Search from './pages/Search.tsx';
 import BestSeller from './pages/Bestseller.tsx';
 import Library from './pages/Library.tsx';
 import Favorites from './pages/Favorites.tsx';
+import Home from './pages/Home.tsx'
 
 const router = createBrowserRouter([
   {
@@ -19,30 +20,30 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Login />, // Login is the "home page"
+        element: <Home />, 
       },
-      // {
-      //   path: "login",
-      //   element: <Login />,
-      // },
       {
-        path: "signup",
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/signup",
         element: <Signup />,
       },
       {
-        path: "search",
+        path: "/search",
         element: <Search />
       },
       {
-        path: 'bestsellers',
+        path: '/bestsellers',
         element:  <BestSeller /> 
       },
       {
-        path: 'favorites',
+        path: '/favorites',
         element: <Favorites /> 
       },
       {
-        path: 'library',
+        path: '/library',
         element:  <Library /> 
       }
     ]
