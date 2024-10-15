@@ -1,5 +1,4 @@
-  # Book Page
-  ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
+  # BookShelf ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
   ## Description
 
@@ -14,17 +13,19 @@
 
   ## Usage
 
-  Sign up for a Book Page account. In the search bar, users can search for books by their title and have the ability to add them to their personal library. While in the library, users can favorite or remove books to their liking. Users can also use the bestsellers page to find books from various genres that are currently trending. When clicking on any of the bestselling books, users will be redirected to an Amazon link of the chosen book.
+  Sign up for a BookShelf account. In the search bar, users can search for books by their title and have the ability to add them to their personal library. While in the library, users can favorite or remove books to their liking. Users can also use the bestsellers page to find books from various genres that are currently trending. When clicking on any of the bestselling books, users will be redirected to an Amazon link of the chosen book.
 
   ## Credits
 
-[Zander Kubajak](https://github.com/ZVKubajak)
+  Original work was completed with a team. 
 
-[Brooke Cline](https://github.com/bcline01)
+[Zander Kubajak](https://github.com/ZVKubajak)
 
 [Selena Garcia](https://github.com/selmgar)
 
 [Zoe Miller](https://github.com/millezo326)
+
+Finalized project was completed by me [Brooke Cline](https://github.com/bcline01)
 
   ## License
 
@@ -32,8 +33,8 @@
 
   ## Questions
 
-  For any questions, please contact the repository owner, ZVKubajak, through GitHub or work email.
+  For any questions, please contact me.
 
-  GitHub: [ZVKubajak](github.com/ZVKubajak)
+  GitHub: [Brooke Cline](https://github.com/bcline01)
   
-  Email: zvkubajak@gmail.com
+  Email: <brookecline.dev@gmail.com>
