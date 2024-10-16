@@ -3,7 +3,8 @@ import { useState, FormEvent, ChangeEvent } from "react";
 import Auth from '../utils/auth';
 import { login } from "../api/authAPI";
 import { Link, useNavigate } from "react-router-dom";
-import './Search.js'
+import './Search.js';
+import Header from '../components/Header.js'
 
 const Login = () => {
   const [nameIsEmpty, setNameIsEmpty] = useState(false);
@@ -55,6 +56,8 @@ const Login = () => {
   };
 
   return (
+    <>
+    <Header />
     <div className='container d-flex flex-column'>
       <form className="d-flex flex-column" onSubmit={handleSubmit}>
         <h1 className='mb-5'>Login</h1>
@@ -94,6 +97,7 @@ const Login = () => {
         <Link className="link-offset-3" to="/signup">Sign Up</Link>
       </div>
     </div>
+    </>
     
   )
 };

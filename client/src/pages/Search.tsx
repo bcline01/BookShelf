@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './css/Search.css';
+import Header from '../components/Header';
 
 
 // Define the Book type with bookId
@@ -51,6 +52,8 @@ const BookSearch: React.FC = () => {
       };
 
   return (
+    <>
+    <Header />
     
     <div className='search-container d-flex flex-column align-items-center'>
       <h1 className="mb-5">Search</h1>
@@ -100,6 +103,7 @@ const BookSearch: React.FC = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

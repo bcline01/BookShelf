@@ -1,8 +1,12 @@
+import './css/Home.css';
+import { NavLink } from "react-router-dom";
 
 export default function Home() {
-    return (
-      <div>
-        <h1>Welcom to BookShelf!</h1>
+  return (
+    <section id="hero">
+      <div className="hero-content">
+        <NavLink to="/login" className="cta-button">LogIn</NavLink>
       </div>
-    );
-  }
+    </section>
+  );
+}

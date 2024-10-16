@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import './css/Favorites.css';
 import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
+import Header from '../components/Header';
 
 // Type definition for a book
 interface Book {
@@ -33,6 +34,8 @@ const Favorites: React.FC = () => {
 
 
   return (
+    <>
+    <Header />
     <div id="favorites" className="d-flex flex-column align-items-center">
       {/* <h2 className="mb-4">Favorites</h2> */}
   
@@ -70,6 +73,7 @@ const Favorites: React.FC = () => {
         </Table>
       )}
     </div>
+    </>
   );
   
 };

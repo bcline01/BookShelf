@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
 import "./css/Library.css";
 import { TiStarFullOutline } from "react-icons/ti";
+import Header from '../components/Header.tsx';
 
 
 
@@ -56,6 +57,8 @@ const Library = () => {
   });
 
   return (
+    <>
+    <Header />
     <div id="library" className="d-flex flex-column align-items-center">
       <h1 className="mb-5">Library</h1>
       <main>
@@ -73,6 +76,7 @@ const Library = () => {
         </Table>
       </main>
     </div>
+    </>
   );
 };
 

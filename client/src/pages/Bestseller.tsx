@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import './css/BestSeller.css';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
+import Header from '../components/Header';
 
 interface List {
     list_name: string;
@@ -46,6 +47,8 @@ const BestSeller: React.FC = () => {
   };
   
     return (
+      <>
+      <Header />
       <div>
         <h1 className="mb-5 mx-4">Best Sellers</h1>
         <div className='search-results'>
@@ -91,6 +94,7 @@ const BestSeller: React.FC = () => {
           )}
         </div>
       </div>
+      </>
 
       
     );
