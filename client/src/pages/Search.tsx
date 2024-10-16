@@ -57,7 +57,7 @@ const BookSearch: React.FC = () => {
     <Header />
     
     <div className='search-container d-flex flex-column align-items-center'>
-      <h1 className="mb-5">Search</h1>
+      <h1 className="mb-5"></h1>
             {/* Pop-up message */}
             {showPopup && (
         <div className="popup-message">
