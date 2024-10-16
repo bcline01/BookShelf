@@ -91,10 +91,10 @@ const Login = () => {
           	Password is required.
         	</div>
         }
-        <button  disabled={!isFormValid()} className="btn btn-outline-primary my-4" type='submit'>Submit</button>
+        <button  disabled={!isFormValid()} className="loginBtn" type='submit'>Submit</button>
       </form>
       <div>
-        <Link className="link-offset-3" to="/signup">Sign Up</Link>
+        <Link className="signupBtn" to="/signup">Sign Up</Link>
       </div>
     </div>
     </>

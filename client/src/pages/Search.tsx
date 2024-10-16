@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './css/Search.css';
 import Header from '../components/Header';
+import '../pages/css/Search.css'
 
 
 // Define the Book type with bookId
@@ -72,7 +73,7 @@ const BookSearch: React.FC = () => {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
-          <button onClick={searchBooks} className="btn btn-primary">
+          <button onClick={searchBooks} className="searchBtn">
             Search
           </button>
         </form>
@@ -89,7 +90,7 @@ const BookSearch: React.FC = () => {
                     <p>{book.isbn}</p>
                     <button
                       onClick={() => addBook(book)}
-                      className="btn btn-success"
+                      className="searchBtn"
                     >
                       Add
                     </button>

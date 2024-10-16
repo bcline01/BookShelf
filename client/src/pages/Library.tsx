@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Book } from "../utils/bookInterface.ts";
 import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
-import "./css/Library.css";
+import './css/Library.css';
 import { TiStarFullOutline } from "react-icons/ti";
 import Header from '../components/Header.tsx';
 
@@ -41,7 +41,7 @@ const Library = () => {
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <button 
             onClick={() => addFavorite(book)} 
-            style={{ background: 'none', border: 'none', cursor: 'pointer', marginBottom: '8px', color: 'white' }}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', marginBottom: '8px', color: '#e2d1ba' }}
             aria-label="Save to Favorites"
             className="icon-button"
           >
@@ -62,7 +62,7 @@ const Library = () => {
     <div id="library" className="d-flex flex-column align-items-center">
       <h1 className="mb-5">Library</h1>
       <main>
-        <Table striped bordered hover variant="dark">
+        <Table striped bordered hover variant="light">
           <thead>
             <tr>
               <th className="center">#</th>

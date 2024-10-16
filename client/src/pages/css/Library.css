@@ -32,5 +32,11 @@
 }
 
 .icon-button:hover .star-icon {
-  color: rgb(240, 240, 113); 
+  color: rgb(240, 240, 90); 
+}
+
+/* CustomTable.css */
+.custom-table thead th,
+.custom-table tbody td {
+  color: var(--bs-dark-text-emphasis); /* Apply dark text emphasis */
 }

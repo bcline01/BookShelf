@@ -1,0 +1,33 @@
+.nav {
+    color: rgb(131, 114, 92);
+    text-decoration: none;
+    position: relative; /* Position for the pseudo-element */
+  padding: 0.5rem 0;
+}
+
+
+.nav::after {
+    content: '';
+    display: block;
+    height: 2px; /* Thickness of the underline */
+    background-color: rgb(131, 114, 92); /* Underline color */
+    width: 0; /* Start with no width */
+    transition: width 0.3s ease; /* Smooth transition */
+    position: absolute; /* Position it below the text */
+    left: 50%; /* Center it */
+    bottom: -5px; /* Position it below the link */
+    transform: translateX(-50%); /* Center adjustment */
+  }
+  
+  .nav:hover::after {
+    width: 100%; /* Expand the width to full on hover */
+  }
+
+.logoutBtn {
+color: rgb(107, 93, 74);
+}
+
+.logoutBtn:hover {
+    background-color: rgb(133, 116, 93);
+    color:white;
+}

@@ -44,7 +44,7 @@ const Favorites: React.FC = () => {
       {favorites.length === 0 ? (
         <p>No favorites added!</p>
       ) : (
-        <Table striped bordered hover variant="dark">
+        <Table striped bordered hover variant="light">
           <thead>
             <tr>
               <th className="center">#</th>
