@@ -4,6 +4,8 @@
 
   A personal online library for readers to search, save, and organize their favorite reads all in one place.
 
+![webpage screenshot](./client/src/assets/BookShelfScreenShot.png)
+
   ## Table of Contents
 
   - [Usage](#usage)
